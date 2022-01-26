@@ -4,15 +4,13 @@
  *  @source 
  */
 public class LeapYear {
+	/** determines whether or not a year is a leap year.
+	 *  @param year
+	 */
     public static boolean isLeapYear(int year) {
-		if(year % 400 == 0 ) {
-			return true;
-		}
-		if(year % 4 == 0 && year % 100 != 0) {
-			return true;
-		}
-		return false;
+		return ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0));
 	}
+	
     /** Calls isLeapYear to print correct statement.
      *  @param  year to be analyzed
      */

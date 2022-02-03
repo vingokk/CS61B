@@ -8,12 +8,12 @@ public class Planet {
 	
 	public Planet(double xP, double yP, double xV,
               double yV, double m, String img) {
-				  xxPos = xP;
-				  yyPos = yP;
-				  xxVel = xV;
-				  yyVel = yV;
-				  mass = m;
-				  imgFileName = img;
+				  this.xxPos = xP;
+				  this.yyPos = yP;
+				  this.xxVel = xV;
+				  this.yyVel = yV;
+				  this.mass = m;
+				  this.imgFileName = img;
 			  }
 	public Planet(Planet p) {
 				  this.xxPos = p.xxPos;
@@ -85,6 +85,6 @@ public class Planet {
 	}
 	public void draw() {
 		/*  Draws the planet itself at its position */
-		StdDraw.picture(this.xxPos, this.yyPos, this.imgFileName);
+		StdDraw.picture(this.xxPos, this.yyPos, "./images/"+this.imgFileName);
 	}
 }

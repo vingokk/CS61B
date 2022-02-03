@@ -29,17 +29,23 @@ public class NBody {
 		}
         return allPlanets;
 	}
-    public static void main(String args){
-		/* Collecting All Needed Input. */
+    public static void main(String[] args){
+		/* Collects All Needed Input. */
 		double T = Double.parseDouble(args[0]);
 		double dt = Double.parseDouble(args[1]);
 		String filename = args[2];
 		double radius = readRadius(filename);
 		Planet[] allPlanets = readPlanets(filename);
-		/* Drawing the Background. */
-		/* public static String imageToDraw = "./images/starfield.jpg";
+		
+		/* Draws the Background. */
+	    String imageToDraw = "./images/starfield.jpg";
 		StdDraw.setScale(2.50e+11, 2.50e+11);
-		StdDraw.picture(0, 0, imageToDraw); */
+		StdDraw.clear();
+		StdDraw.picture(0, 0, imageToDraw);
+		StdDraw.picture(0, 75, imageToDraw);
+		for(Planet P : allPlanets) {
+			P.draw();
+		}
 	}	
 }
 

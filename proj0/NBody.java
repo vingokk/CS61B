@@ -39,12 +39,38 @@ public class NBody {
 		
 		/* Draws the Background. */
 	    String imageToDraw = "./images/starfield.jpg";
-		StdDraw.setScale(2.50e+11, 2.50e+11);
+		StdDraw.setScale(-radius, radius);
 		StdDraw.clear();
 		StdDraw.picture(0, 0, imageToDraw);
-		StdDraw.picture(0, 75, imageToDraw);
 		for(Planet P : allPlanets) {
 			P.draw();
+		}
+		
+		/* Creats an Animation. */
+		StdDraw.enableDoubleBuffering();
+		double count = 0;
+		int waitTimeMilliseconds = 10;
+		double[] xForces = new double[5];
+		double[] yForces = new double[5];
+		while(count < T){
+			int i = 0;
+			for(Planet P : allPlanets) {
+				/* Calculates. */
+				xForces[i] = P.calcNetForceExertedByX(allPlanets);
+				yForces[i] = P.calcNetForceExertedByY(allPlanets);
+				allPlanets[i].update(dt, xForces[i], yForces[i]);
+				i++;
+		    }
+			
+			/* Draws. */
+			StdDraw.clear();
+			StdDraw.picture(0, 0, imageToDraw);
+		    for(Planet P : allPlanets) {
+			    P.draw();
+		    }
+			StdDraw.show();
+			StdDraw.pause(waitTimeMilliseconds);
+			count += dt;
 		}
 	}	
 }

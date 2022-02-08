@@ -67,7 +67,7 @@ public class IntList {
      */
     public static IntList squareListRecursive(IntList L) {
         if (L == null) {
-            return null;
+             return null;
         }
         return new IntList(L.first * L.first, squareListRecursive(L.rest));
     }
@@ -82,7 +82,24 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        /* Iteration. */
+        if(A == null) {
+            /* The answer remains uncertain. */
+            return null;
+        }
+        IntList temp = A;
+        while(temp.rest != null) {
+            temp = temp.rest;
+        }
+        temp.rest = B;
+        return A;
+
+        /* Recursion-Incompleted. */
+//        if(A == null) {
+//            A = B;
+//            return A;
+//        }
+//        return dcatenate(A.rest, B);
     }
 
     /**
@@ -91,7 +108,27 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        /* Iteration. */
+//        if (A == null) {
+//            /* The answer remains uncertain. */
+//            return null;
+//        }
+//        IntList res = new IntList(A.first, null);
+//        IntList ptr = res;
+//        A = A.rest;
+//        while (A != null) {
+//            ptr.rest = new IntList(A.first, null);
+//            A = A.rest;
+//            ptr = ptr.rest;
+//        }
+//        ptr.rest = B;
+//        return res;
+
+        /* Recursion. */
+        if(A == null) {
+            return B;
+        }
+        return new IntList(A.first, catenate(A.rest, B));
     }
 
 

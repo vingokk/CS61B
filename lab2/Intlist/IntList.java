@@ -85,7 +85,7 @@ public class IntList {
         /* Iteration. */
         if(A == null) {
             /* The answer remains uncertain. */
-            return null;
+            return B;
         }
         IntList temp = A;
         while(temp.rest != null) {

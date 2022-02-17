@@ -106,16 +106,16 @@ public class LinkedListDeque<T> {
 
     /** Gets the item at the given index using recursion. */
     public T getRecursive(int index) {
-        return getRecursiveHelper(sentinel.next, index);
+        return getRecursive(sentinel.next, index);
     }
-    public T getRecursiveHelper(TNode p, int index) {
+    public T getRecursive(TNode p, int index) {
         if ((index < 0) || (index > size - 1) || isEmpty()) {
             return null;
         }
         if (index == 0) {
             return p.item;
         }
-        return getRecursiveHelper(p.next, index - 1);
+        return getRecursive(p.next, index - 1);
     }
 
 //    public static void main(String[] args) {

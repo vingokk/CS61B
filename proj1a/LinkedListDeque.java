@@ -118,6 +118,7 @@ public class LinkedListDeque<T> {
         return getRecursive(p.next, index - 1);
     }
 
+    /* Testing by print. */
 //    public static void main(String[] args) {
 //        LinkedListDeque<Integer> D = new LinkedListDeque<>();
 //        D.addFirst(10);

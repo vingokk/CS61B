@@ -1,11 +1,11 @@
-/** Implements Deque(Double Ended Queuq) based on LinkedList.
+/** Implements Deque(Double Ended Queue) based on LinkedList.
  * @author vingo
  */
 public class LinkedListDeque<T> {
-    public class TNode {
-        public T item;
-        public TNode prev;
-        public TNode next;
+    private class TNode {
+        private T item;
+        private TNode prev;
+        private TNode next;
         public TNode(TNode p, T i, TNode n) {
             item = i;
             prev = p;
@@ -21,17 +21,17 @@ public class LinkedListDeque<T> {
         sentinel.next = sentinel;
         size = 0;
     }
-    /** Creats a deep copy. */
-    public LinkedListDeque(LinkedListDeque<T> other) {
-        sentinel = new TNode(null, null, null);
-        sentinel.prev = sentinel;
-        sentinel.next = sentinel;
-        size = 0;
-        /* Copy. */
-        for (int i = 0; i < other.size(); i++) {
-            this.addLast(other.get(i));
-        }
-    }
+//    /** Creats a deep copy. */
+//    public LinkedListDeque(LinkedListDeque<T> other) {
+//        sentinel = new TNode(null, null, null);
+//        sentinel.prev = sentinel;
+//        sentinel.next = sentinel;
+//        size = 0;
+//        /* Copy. */
+//        for (int i = 0; i < other.size(); i++) {
+//            this.addLast(other.get(i));
+//        }
+//    }
     /** Adds an item of type T to the front of the deque. */
     public void addFirst(T item) {
         sentinel.next.prev = new TNode(sentinel, item, sentinel.next);
@@ -98,7 +98,7 @@ public class LinkedListDeque<T> {
         }
         TNode p = sentinel.next;
         while (index > 0) {
-            index -- ;
+            index -= 1;
             p = p.next;
         }
         return p.item;
@@ -108,7 +108,7 @@ public class LinkedListDeque<T> {
     public T getRecursive(int index) {
         return getRecursive(sentinel.next, index);
     }
-    public T getRecursive(TNode p, int index) {
+    private T getRecursive(TNode p, int index) {
         if ((index < 0) || (index > size - 1) || isEmpty()) {
             return null;
         }
@@ -128,4 +128,3 @@ public class LinkedListDeque<T> {
 //        F.printDeque();
 //    }
 }
-

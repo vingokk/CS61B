@@ -20,17 +20,17 @@ public class ArrayDeque<T> {
         size += 1;
     }
     /** Returns the index after the given index. */
-    public int plusOne(int index) {
+    private int plusOne(int index) {
         /* if index == items.length -1, return 0. */
         return (index + 1) % items.length;
     }
     /** Returns the index before the given index. */
-    public int minusOne(int index) {
+    private int minusOne(int index) {
         /* if index == 0, return items.length -1. */
         return (index - 1 + items.length) % items.length;
     }
     /** Resizes the deque by capacity, size remains the same. */
-    public void resize(int capacity) {
+    private void resize(int capacity) {
         @SuppressWarnings("unchecked")
         T[] a = (T[]) new Object[capacity];
         int head = plusOne(nextFirst);
@@ -43,7 +43,7 @@ public class ArrayDeque<T> {
         nextLast = size;
     }
     /** Expands the deque by refactor */
-    public void upsize() {
+    private void upsize() {
         int refactor = 2;
         resize(refactor * items.length);
     }
@@ -61,7 +61,7 @@ public class ArrayDeque<T> {
         return size == 0;
     }
     /**  Returns true if deque is full, false otherwise. */
-    public boolean isFull() {
+    private boolean isFull() {
         return size == items.length;
     }
     /** Returns the number of items in the deque. */
@@ -100,15 +100,15 @@ public class ArrayDeque<T> {
     /** Returns true if the usage is less than 0.25 and
      *  the length of deque is more than 16, false otherwise.
      *  */
-    public boolean isRedundant() {
+    private boolean isRedundant() {
         double ratioUsage = 1.0 * size / items.length;
-        return  ratioUsage<= 0.25 && items.length >= 16;
+        return  ratioUsage <= 0.25 && items.length >= 16;
     }
     /** Shrinks the deque by refactor.*/
-    public void downsize() {
+    private void downsize() {
         /* Halves the size of the whole deque. */
         double refactor = 0.5;
-        resize((int)(items.length * refactor));
+        resize((int) (items.length * refactor));
     }
     /** Removes and returns the item at the back of the deque.
      *  If no such item exists, returns null.

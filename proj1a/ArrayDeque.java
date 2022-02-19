@@ -137,23 +137,27 @@ public class ArrayDeque<T> {
             return null;
         }
         int i = plusOne(nextFirst) + index;
-        if (i > items.length) {
+        if (i >= items.length) {
             return items[i - items.length];
         }
         return items[i];
     }
-//    public static void main(String[] args) {
-//        ArrayDeque<Integer> D = new ArrayDeque<>();
-//        for (int i = 0; i < 16; i++) {
-//            D.addLast(i);
-//        }
-//        for (int i = 0; i < 15; i++) {
-//            D.removeFirst();
-//        }
-//        for (int i = 0; i < 16; i++) {
-//            D.addFirst(i);
-//        }
-//        System.out.println(D.size());
-//        D.printDeque();
-//    }
+    public static void main(String[] args) {
+        ArrayDeque<Integer> D = new ArrayDeque<>();
+        D.addFirst(0);
+        D.addLast(1);
+        D.removeFirst();
+        D.addLast(3);
+        D.removeFirst();
+        D.addLast(5);
+        D.removeFirst();
+        D.addLast(7);
+        D.removeLast();
+        D.get(0);
+        D.addFirst(10);
+        D.addLast(11);
+        D.addLast(12);
+        D.get(3);
+        D.get(4);
+    }
 }

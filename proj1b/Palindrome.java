@@ -15,7 +15,7 @@ public class Palindrome {
     }
 
     /** Returns true if the given deque is a palindrome, false otherwise. */
-    public boolean isPalindrome(Deque<Character> deques) {
+    private boolean isPalindrome(Deque<Character> deques) {
         if (deques.size() == 0 || deques.size() == 1) {
             return true;
         }
@@ -32,12 +32,12 @@ public class Palindrome {
     }
     /** Returns true if the given deque is a palindrome according to the character comparator,
      *  false otherwise. */
-    public boolean isPalindrome(Deque<Character> deques, CharacterComparator cc) {
+    private boolean isPalindrome(Deque<Character> deques, CharacterComparator cc) {
         if (deques.size() == 0 || deques.size() == 1) {
             return true;
         }
         if (cc.equalChars(deques.removeFirst(), deques.removeLast())) {
-            return isPalindrome(deques);
+            return isPalindrome(deques, cc);
         }
         return false;
     }

@@ -39,11 +39,12 @@ public class TestPalindrome {
     @Test
     public void testCcIsPalindrome() {
         CharacterComparator offByOne = new OffByOne();
+        CharacterComparator cc = new OffByN(5);
         assertTrue(palindrome.isPalindrome(" ", offByOne));
         assertTrue(palindrome.isPalindrome("a", offByOne));
         assertTrue(palindrome.isPalindrome("ab", offByOne));
         assertTrue(palindrome.isPalindrome("abb", offByOne));
         assertTrue(palindrome.isPalindrome("detrude", offByOne));
-        assertFalse(palindrome.isPalindrome("&bc", offByOne));
+        assertTrue(palindrome.isPalindrome("binding", cc));
     }
 }

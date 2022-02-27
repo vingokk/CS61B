@@ -1,45 +1,46 @@
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+/**
+ *  Tests methods in the StudentArrayDeque and ArrayDequeSolution.
+ *  @source Adopts codes from StudentArrayDeque.
+ */
 public class TestArrayDequeGold {
-    /**
-     *  Tests methods in the StudentArrayDeque and ArrayDequeSolution.
-     *  @source Adopts codes from StudentArrayDeque.
-     */
+    private static int epochs = 500; // The number of calling methods.
+    private static String message = ""; // Stores failure sequence.
+
     @Test
-    public void test1() {
+    public void test() {
         StudentArrayDeque<Integer> sad1 = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> sad2 = new ArrayDequeSolution<>();
-        String s = "";
-        for (int i = 0; i < 500; i += 1) {
-            double numberBetweenZeroAndOne = StdRandom.uniform();
+
+        for (int i = 0; i < epochs; i += 1) {
+            double numberBetweenZeroAndOne = StdRandom.uniform(); // Produces a number between 0 and 1 randomly.
             if (numberBetweenZeroAndOne < 0.25) {
                 sad1.addLast(i);
                 sad2.addLast(i);
-                s += "addLast(" + i + ")\n";
-                assertEquals(s, sad2.get(sad2.size() - 1), sad1.get(sad1.size() - 1));
+                message += "addLast(" + i + ")\n";
+                assertEquals(message, sad2.get(sad2.size() - 1), sad1.get(sad1.size() - 1));
             } else if (numberBetweenZeroAndOne < 0.5) {
                 sad1.addFirst(i);
                 sad2.addFirst(i);
-                s += "addFirst(" + i + ")\n";
-                assertEquals(s, sad2.get(0), sad1.get(0));
+                message += "addFirst(" + i + ")\n";
+                assertEquals(message, sad2.get(0), sad1.get(0));
             } else if (numberBetweenZeroAndOne < 0.75) {
                 if (!sad1.isEmpty() && !sad2.isEmpty()) {
-                    Integer x = sad1.removeFirst();
-                    Integer y = sad2.removeFirst();
-                    s += "removeFirst()\n";
-                    assertEquals(s, y, x);
+                    Integer actual = sad1.removeFirst();
+                    Integer expected = sad2.removeFirst();
+                    message += "removeFirst()\n";
+                    assertEquals(message, expected, actual);
                 }
             } else {
                 if (!sad1.isEmpty() && !sad2.isEmpty()) {
-                    Integer x = sad1.removeLast();
-                    Integer y = sad2.removeLast();
-                    s += "removeLast()\n";
-                    assertEquals(s, y, x);
+                    Integer actual = sad1.removeLast();
+                    Integer expected = sad2.removeLast();
+                    message += "removeLast()\n";
+                    assertEquals(message, expected, actual);
                 }
             }
         }
     }
 }
-

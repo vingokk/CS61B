@@ -1,5 +1,5 @@
 /** Implements Interface CharacterComparator. */
-public class OffByN implements CharacterComparator{
+public class OffByN implements CharacterComparator {
     static int diff;
     public OffByN(int N) {
         diff = N;

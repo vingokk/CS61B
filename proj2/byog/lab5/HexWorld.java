@@ -10,6 +10,7 @@ import java.util.Random;
 
 /**
  * Draws a world consisting of hexagonal regions.
+ * @author vingo
  */
 public class HexWorld {
 
@@ -23,36 +24,63 @@ public class HexWorld {
             }
         }
     }
-    /** Draws a hexagon with certain side. */
-    private static void addHexagon(int side, int offX, int offY, TETile[][] world) {
-        // the side of the hexagon
+
+    /** Draws a tesselation of hexagons with side 3. */
+    private static void addTeHexagon(TETile[][] world) {
+        int side = 3;
+        int height = side * 2;
+        int xOff;
+        int yOff;
+
+        for (int x = 0; x < 5; x += 1) {
+            xOff = 5 * x; // the start position of the whole colum of hexagons
+            if (x < 3) { // left side
+                int num = x + 3;
+                for (int y = 0; y < num; y += 1) {
+                    yOff = (2 - x) * side + 2 * side * y ;
+                    addHexagon(side, xOff, yOff,  world);
+                }
+            } else { // right side
+                int num = 7 - x;
+                for (int y = 0; y < num; y += 1) {
+                    yOff = (x - 2) * side + 2 * side * y;
+                    addHexagon(side, xOff, yOff,  world);
+                }
+            }
+
+        }
+    }
+    /** Draws a hexagon with certain side.
+     * @param size the side of the hexagon
+     * */
+    private static void addHexagon(int side, int xOff, int yOff, TETile[][] world) {
         int height = side * 2; // the height of the hexagon
         int longestSide = 3 * side - 2;
         int width = side; // the bottom width
         TETile pattern = randomTile();
-        for (int y = offY ; y < height + offY; y += 1) {
-            if (y - offY < height / 2) {
-                if (y == offY) {
+        for (int y = yOff ; y < height + yOff; y += 1) {
+            if (y - yOff < height / 2) {
+                if (y == yOff) {
                     width -= 2; // keep the width when it comes to the bottom of th hexagon
                 }
                 width += 2;
             }
             else {
-                if ( y - offY == height / 2) {
+                if ( y - yOff == height / 2) {
                     width += 2; // keep the width when it comes to the middle of th hexagon
                 }
                 width -= 2;
             }
             int x0 = (longestSide - width) / 2;
-            for (int x = x0 + offX; x < x0 + width + offX; x += 1) {
+            for (int x = x0 + xOff; x < x0 + width + xOff; x += 1) {
                 world[x][y] = pattern;
             }
         }
     }
 
-    /** Picks a RANDOM tile with a 33% change of being
+    /** Picks a RANDOM tile with a 33% chance of being
      *  a wall, 33% chance of being a flower, and 33%
-     *  chance of being empty space.
+     *  chance of being water.
      *  @source RandomWorldDemo.java by JoshHug
      */
     private static TETile randomTile() {
@@ -75,7 +103,11 @@ public class HexWorld {
         // initialize the tile
         TETile[][] world = new TETile[width][height];
         drawBackground(world);
-        addHexagon(3, 10, 10, world);
+//        addHexagon(3, 0, 0, world);
+//        ter.renderFrame(world);
+
+        // draw a tesselation of hexagon
+        addTeHexagon(world);
         ter.renderFrame(world);
     }
 }

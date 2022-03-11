@@ -28,7 +28,6 @@ public class HexWorld {
     /** Draws a tesselation of hexagons with side 3. */
     private static void addTeHexagon(TETile[][] world) {
         int side = 3;
-        int height = side * 2;
         int xOff;
         int yOff;
 
@@ -47,34 +46,38 @@ public class HexWorld {
                     addHexagon(side, xOff, yOff,  world);
                 }
             }
-
         }
     }
+
     /** Draws a hexagon with certain side.
      * @param size the side of the hexagon
      * */
     private static void addHexagon(int side, int xOff, int yOff, TETile[][] world) {
         int height = side * 2; // the height of the hexagon
         int longestSide = 3 * side - 2;
-        int width = side; // the bottom width
+        int width; // the width in the row of a hexagon
         TETile pattern = randomTile();
         for (int y = yOff ; y < height + yOff; y += 1) {
-            if (y - yOff < height / 2) {
-                if (y == yOff) {
-                    width -= 2; // keep the width when it comes to the bottom of th hexagon
-                }
-                width += 2;
-            }
-            else {
-                if ( y - yOff == height / 2) {
-                    width += 2; // keep the width when it comes to the middle of th hexagon
-                }
-                width -= 2;
-            }
+            width = getWidth(y - yOff, side);
             int x0 = (longestSide - width) / 2;
             for (int x = x0 + xOff; x < x0 + width + xOff; x += 1) {
                 world[x][y] = pattern;
             }
+        }
+    }
+
+    /** Calculates the width in the ith row of a hexagon.
+     * @param i row num of the hexagon, where i = 0 is the bottom
+     * @param s side of rhe hexagon
+     * @return
+     */
+    private static int getWidth(int i, int s) {
+        int width = s;
+        if (i < s) {
+            return width + i * 2;
+        }
+        else {
+            return width + (2 * s - i - 1) * 2;
         }
     }
 

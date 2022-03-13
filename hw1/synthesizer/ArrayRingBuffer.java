@@ -77,18 +77,22 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     /** Works only when buffer's first starts at 0 */
     private class BqIterator implements Iterator<T> {
         private int ptr;
+        private int num; // the times of the pointer moving
+
         public BqIterator() {
             ptr = first;
+            num = 0;
         }
         @Override
         public boolean hasNext() {
-            return ptr != fillCount;
+            return num != fillCount;
         }
 
         @Override
         public T next() {
             T nextItem = rb[ptr];
-            ptr += 1;
+            ptr = plusOne(ptr);
+            num += 1;
             return nextItem;
         }
     }

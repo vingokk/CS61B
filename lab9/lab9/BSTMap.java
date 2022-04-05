@@ -90,7 +90,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      */
     @Override
     public void put(K key, V value) {
-        if (key == null || value == null) {
+        if (key == null) {
             throw new  IllegalArgumentException("argument to containsKey() is null");
         }
         root = putHelper(key, value, root);
@@ -129,6 +129,9 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      */
     @Override
     public V remove(K key) {
+        if (key == null) {
+            throw new IllegalArgumentException("argument to remove is null");
+        }
         V min = get(key);
         root = removeHelper(key, root);
         return min;
@@ -180,6 +183,9 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      **/
     @Override
     public V remove(K key, V value) {
+        if (key == null) {
+            throw new IllegalArgumentException("argument to remove is null");
+        }
         if (get(key) == value) {
             return remove(key);
         }
@@ -188,28 +194,28 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
 
     @Override
     public Iterator<K> iterator() {
-        throw new UnsupportedOperationException();
+        return keySet().iterator();
     }
 
-    /** Prints the map in order of increasing key. */
-    public void printInOrder() {
-        printInOrder(root);
-    }
-
-    private Node printInOrder(Node p) {
-        if (p == null) {
-            return null;
-        }
-        printInOrder(p.left);
-        print(p);
-        printInOrder(p.right);
-        return null;
-    }
-
-    private void print(Node p) {
-        if(p == null){
-            System.out.print("null");
-        }
-        System.out.print(p.key + " ");
-    }
+//    /** Prints the map in order of increasing key. */
+//    public void printInOrder() {
+//        printInOrder(root);
+//    }
+//
+//    private Node printInOrder(Node p) {
+//        if (p == null) {
+//            return null;
+//        }
+//        printInOrder(p.left);
+//        print(p);
+//        printInOrder(p.right);
+//        return null;
+//    }
+//
+//    private void print(Node p) {
+//        if(p == null){
+//            System.out.print("null");
+//        }
+//        System.out.print(p.key + " ");
+//    }
 }

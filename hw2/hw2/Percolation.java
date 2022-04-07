@@ -1,15 +1,16 @@
 package hw2;
 
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+import edu.princeton.cs.algs4.QuickFindUF;
 
 public class Percolation {
 
     private int[] sites;
-    private int size; // the number of whole item
+    private int size; // the number of tue site
     private int len; // the number of colum
     private int numOpen; // the number of the sites which is open
     private WeightedQuickUnionUF set;
-
+    // private QuickFindUF set;
     /** Creates N-by-N grid, with all sites initially blocked. */
     public Percolation(int N) {
         // R(N) ->  θ(N ^ 2)
@@ -21,6 +22,7 @@ public class Percolation {
         numOpen = 0;
         sites = new int[size + 2] ; // N * N grid + top site + bottom site
         set = new WeightedQuickUnionUF(size + 2);
+        // set = new QuickFindUF(size + 2);
 
         //Initialize
         for (int i = 0; i < size; i += 1) {
@@ -33,7 +35,11 @@ public class Percolation {
     /** Opens the site (row, col) if it is not open already. */
     public void open(int row, int col) {
         // R(N) ->  θ(logN)
+
         int index = xyTo1D(row, col);
+        if (sites[index] == 1) {
+            return;
+        }
         sites[index] = 1;
         numOpen += 1;
         siteUnion(index);

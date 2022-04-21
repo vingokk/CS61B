@@ -26,7 +26,7 @@ public class MazeDepthFirstPaths extends MazeExplorer {
 
     private void dfs(int v) {
         marked[v] = true;
-        announce();
+        announce(); // drawing
 
         if (v == t) {
             targetFound = true;

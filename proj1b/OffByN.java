@@ -1,6 +1,6 @@
 /** Implements Interface CharacterComparator. */
 public class OffByN implements CharacterComparator {
-    static int diff;
+    private int diff;
     public OffByN(int N) {
         diff = N;
     }

@@ -9,7 +9,7 @@ public class DebugExercise2 {
     public static int max(int a, int b) {
         /* If you're stepping into this function, click the
            step out button because you're not going to learn anything. */
-        if(a > b) {
+        if (a > b) {
             return a;
         }
         return b;

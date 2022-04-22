@@ -1,2 +1,4 @@
-package vingo.dog;public class Dog {
+package vingo.dog;
+
+public class Dog {
 }

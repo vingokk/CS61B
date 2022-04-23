@@ -111,8 +111,8 @@ public class Board implements WorldState {
     }
     private Point valueToXY(int val) {
         int N = size();
-        int j = (val - 1) / N;
-        int i = (val % N) - 1;
+        int i = (val - 1) / N;
+        int j = (val - 1) % N;
         return new Point(i, j);
     }
     private int calDistance(Point a, Point b) {

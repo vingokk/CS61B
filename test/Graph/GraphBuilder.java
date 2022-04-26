@@ -96,7 +96,7 @@ public class GraphBuilder {
         MyGraph<Node, Weight> G;
         G = new MyGraph<>(path.length);
         Node n0 = new Node(0, 1, 0 - 238);
-        Node n1 = new Node(1, 1.5, 70 -226);
+        Node n1 = new Node(1, 1.5, 70 - 226);
         Node n2 = new Node(2, 2, 90 - 214);
         Node n3 = new Node(3, 3, 0 - 202);
         Node n4 = new Node(4, 5, 90 - 190);
@@ -105,7 +105,7 @@ public class GraphBuilder {
         Node n7 = new Node(7, 2.5, 100 - 153);
         Node n8 = new Node(8, 3.5, 140 - 141);
         Node n9 = new Node(9, 2, 80 - 129);
-        Node n10 = new Node(10, 2.5, 30 -117);
+        Node n10 = new Node(10, 2.5, 30 - 117);
         Node n11 = new Node(11, 5, 115 - 105);
 
         // path = {2,3,1,0,4,6,5,7,8,11,9,10};

@@ -50,7 +50,7 @@ public class MyGraph<T extends Node, E extends Weight> {
 		//moneyEdge[w.num][v.num] = weight.money;
 	}
 
-	public Iterable<T> adj(T v){
+	public Iterable<T> adj(T v) {
 		return map.get(v);
 	}
 

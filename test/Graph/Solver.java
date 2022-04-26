@@ -15,7 +15,7 @@ public class Solver {
     private double F0; // restriction on Ftotal
     private double D0; // restriction on Dtotal
 
-    public Solver(MyGraph<Node, Weight> g, int[] path, double[]parameter){
+    public Solver(MyGraph<Node, Weight> g, int[] path, double[]parameter) {
         this.G = g;
         this.path = path;
 //        this.s = s;
@@ -76,7 +76,7 @@ public class Solver {
         double sumTimeEdge = 0;
         for (int i = 0; i < path.length - 1; i += 1) {
             int s = path[i]; // index of source
-            int t = path[i+1]; // index of target
+            int t = path[i + 1]; // index of target
             sumTimeStay += G.time[t];
             sumTimeEdge += G.timeEdge[s][t];
         }
@@ -85,7 +85,7 @@ public class Solver {
 
     /** Calculates the U-satisfaction in the expression. */
     private double calSatisfaction() {
-        double sumRank= 0;
+        double sumRank = 0;
         for (int i = 0; i < path.length - 1; i += 1) {
             int rank = path[i] + 1; // index of source
             sumRank += rank;
@@ -99,7 +99,7 @@ public class Solver {
         double sumMoneyEdge = 0;
         for (int i = 0; i < path.length - 1; i += 1) {
             int s = path[i]; // index of source
-            int t = path[i+1]; // index of target
+            int t = path[i + 1]; // index of target
             sumMoneyStay += G.money[t];
             sumMoneyEdge += G.moneyEdge[s][t];
         }
@@ -112,7 +112,7 @@ public class Solver {
         double sumTimeEdge = 0;
         for (int i = 0; i < path.length - 1; i += 1) {
             int s = path[i]; // index of source
-            int t = path[i+1]; // index of target
+            int t = path[i + 1]; // index of target
             sumTimeStay += G.time[t];
             sumTimeEdge += G.timeEdge[s][t];
         }

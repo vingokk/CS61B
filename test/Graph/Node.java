@@ -17,10 +17,8 @@ public class Node {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
-        Node Node1 = (Node) o;
-
-        return Node1.num == this.num;
+        Node node1 = (Node) o;
+        return node1.num == this.num;
     }
 
     @Override

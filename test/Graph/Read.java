@@ -1,5 +1,5 @@
-/** Read xlsx file as an array. *
- * @source https://blog.csdn.net/sinat_22797429/article/details/52900152
+/** Class that reads a xlsx file as an array.
+ *  @source https://blog.csdn.net/sinat_22797429/article/details/52900152
  */
 
 import java.io.File;

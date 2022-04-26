@@ -1,3 +1,4 @@
+/** Class that represents a place, including some related properties. */
 public class Node {
     public int num;
     public double time;

@@ -1,4 +1,6 @@
-/** Builds a graph with a certain path and weights. */
+/** Class that builds a graph with a certain path and weights,
+ *  which depicts how the man travelled to the cities.
+ */
 public class GraphBuilder {
     /** Graph for Question1. */
     public static MyGraph<Node, Weight> buildQuestion1(int[] path) {
@@ -89,6 +91,7 @@ public class GraphBuilder {
         return G;
     }
 
+    /** Graph for Question3. */
     public static MyGraph<Node, Weight> buildQuestion3(int[] path) {
         MyGraph<Node, Weight> G;
         G = new MyGraph<>(path.length);
